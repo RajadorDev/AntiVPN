@@ -1,0 +1,5 @@
+name: AntiVPN
+api: 1.0.0
+version: 0.0.1 beta
+main: RajadorAntiVPN\System
+author: Rajador#7070
