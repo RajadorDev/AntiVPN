@@ -57,7 +57,10 @@ final class Manager extends PluginBase
 	
 	public function onDisable() : void 
 	{
-		
+		if ($this->isBlackListEnabled())
+		{
+			$this->getBlackList()->save();
+		}
 	}
 	
 	public function initResource() : void 
@@ -71,6 +74,8 @@ final class Manager extends PluginBase
 		$this->hasBlackList = $hasBlackList;
 		if ($hasBlackList)
 		{
+			$dir = $this->getDataFolder() . 'blacklist.txt';
+			$this->blackList = new Config($dir, Config::ENUM);
 			$this->getLogger()->info('Blacklist cache enabled.');
 		} else {
 			$this->getLogger()->info('Blacklist cache disabled.');
