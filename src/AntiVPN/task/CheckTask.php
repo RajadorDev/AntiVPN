@@ -19,10 +19,20 @@ declare (strict_types = 1);
 
 namespace AntiVPN\task;
 
+use CurlHandle;
+
+use AntiVPN\utils\AntiVPNAPI;
+
 use pocketmine\scheduler\AsyncTask;
 
 class CheckTask extends AsyncTask 
 {
+	
+	const FAIL_CURL_INIT = 0;
+	
+	const FAIL_CURL_EXECUTE = 1;
+	
+	const FAIL_API = 2;
 	
 	/** @var String **/
 	protected String $ip, $username, $token;
@@ -41,7 +51,16 @@ class CheckTask extends AsyncTask
 	
 	public function onRun() : void
 	{
-		
+		$url = AntiVPNAPI::makeUrl($this->ip, $this->token);
+		$curl = curl_init($url);
+		if ($curl instanceof CurlHandle)
+		{
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($curl, CURLOPT_SSL_VERIFYSTATUS, false);
+		} else {
+			$this->setResult(self::FAIL_CURL);
+		}
 	}
 	
 }
