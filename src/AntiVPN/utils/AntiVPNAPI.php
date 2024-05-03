@@ -26,7 +26,7 @@ final class AntiVPNAPI
 	
 	const CHECK_INDEX = 'security';
 	
-	const CHECK_ERROR_TAG = 'message';
+	const CHECK_ERROR_INDEX = 'message';
 	
 	public static function isValidKey(String $key) : bool 
 	{
