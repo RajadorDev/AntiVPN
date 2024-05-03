@@ -10,4 +10,7 @@ permissions:
   antivpn.command:
     description: 'AntiVPN admin command permission'
     default: op
+  antivpn.command.setkey:
+    description: 'Set api key'
+    default: op
 ...
