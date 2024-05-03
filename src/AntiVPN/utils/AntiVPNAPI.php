@@ -24,6 +24,10 @@ final class AntiVPNAPI
 	
 	const URL = 'https://vpnapi.io/api/';
 	
+	const CHECK_INDEX = 'security';
+	
+	const CHECK_ERROR_TAG = 'message';
+	
 	public static function isValidKey(String $key) : bool 
 	{
 		return strlen(trim($key)) > 1 && strpos($key, ' ') === false;
