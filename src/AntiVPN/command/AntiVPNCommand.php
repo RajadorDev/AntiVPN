@@ -84,6 +84,12 @@ final class AntiVPNCommand extends Command
 							}
 						}
 					break;
+					case 'wl':
+						if ($this->testPermission($p, 'antivpn.command.whitelist'))
+						{
+							
+						}
+					break;
 					default:
 						$this->showUsageTo($p, $label);
 					break;
