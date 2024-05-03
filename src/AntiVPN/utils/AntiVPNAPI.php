@@ -29,6 +29,11 @@ final class AntiVPNAPI
 		return strlen(trim($key)) > 1 && strpos($key, ' ') === false;
 	}
 	
+	public static function makeUrl(String $adr, String $token) : String 
+	{
+		return self::API . $adr . '?key=' . $token;
+	}
+	
 }
 
 ?>
