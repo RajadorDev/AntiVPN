@@ -21,6 +21,8 @@ namespace AntiVPN\command;
 
 use AntiVPN\Manager;
 
+use AntiVPN\utils\AntiVPNAPI;
+
 use pocketmine\command\{Command, CommandSender};
 
 final class AntiVPNCommand extends Command 
@@ -60,6 +62,20 @@ final class AntiVPNCommand extends Command
 						{
 							if (isset($args[1]) && trim($args[1]) != '')
 							{
+								$key = $args[1];
+								if (isset($args[2]))
+								{
+									$key = $args;
+									unset($key[0]);
+									$key = implode(' ', $key);
+								}
+								
+								if (AntiVPNAPI::isValidKey($key))
+								{
+									
+								} else {
+									$p->sendMessage(self::COMMAND_PREFIX . "§7\"§f{$key}§7\" §cis not a valid key!");
+								}
 								
 							} else {
 								$p->sendMessage(self::COMMAND_PREFIX . "§7Use: §f/{$label} {$args[0]} <key>");
