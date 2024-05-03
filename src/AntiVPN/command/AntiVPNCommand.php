@@ -73,7 +73,8 @@ final class AntiVPNCommand extends Command
 								if (AntiVPNAPI::isValidKey($key))
 								{
 									$this->manager->setKey($key);
-									$this->manager->saveKey($key);
+									$this->manager->saveKey();
+									$p->sendMessage(self::COMMAND_PREFIX . '§7Key setted §l§aSuceffully§r§7.');
 								} else {
 									$p->sendMessage(self::COMMAND_PREFIX . "§7\"§f{$key}§7\" §cis not a valid key!");
 								}
