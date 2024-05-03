@@ -22,7 +22,7 @@ namespace AntiVPN\utils;
 final class AntiVPNAPI 
 {
 	
-	const URL = '';
+	const URL = 'https://vpnapi.io/api/';
 	
 	public static function isValidKey(String $key) : bool 
 	{
