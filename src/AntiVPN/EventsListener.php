@@ -85,7 +85,7 @@ final class EventsListener implements Listener
 		if (!$e->isCancelled())
 		{
 			$player = $e->getPlayer();
-			if ($this->manager->isWhiteListed($player))
+			if ($this->manager->isWhiteListed($player) || $player->hasPermission('antivpn.bypass'))
 			{
 				$e->cancel();
 				$this->manager->getLogger()->info('Player ' . $player->getName() . ' was allowed to join by whitelist.');
