@@ -23,6 +23,8 @@ use pocketmine\plugin\PluginBase;
 
 use pocketmine\utils\Config;
 
+use pocketmine\player\Player;
+
 final class Manager extends PluginBase 
 {
 	
