@@ -189,6 +189,12 @@ final class Manager extends PluginBase
 		return str_replace('{player}', $playerName, $message);
 	}
 	
+	public function getAdminAlertMessage(String $playerName) : String 
+	{
+		$message = (string) $this->getConfigValue('alert-admin-message', '');
+		return str_replace('{player}', $playerName, $message);
+	}
+	
 	public function startCheck(Player $player, callable | null $call = null) : bool
 	{
 		$ev = new StartCheckEvent($player);
