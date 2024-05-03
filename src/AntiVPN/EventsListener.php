@@ -21,6 +21,8 @@ namespace AntiVPN;
 
 use pocketmine\event\Listener;
 
+use pocketmine\event\player\PlayerLoginEvent;
+
 final class EventsListener implements Listener 
 {
 	
