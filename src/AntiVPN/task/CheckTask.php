@@ -27,6 +27,8 @@ use AntiVPN\utils\AntiVPNAPI;
 
 use pocketmine\Server;
 
+use pocketmine\player\Player;
+
 use pocketmine\scheduler\AsyncTask;
 
 class CheckTask extends AsyncTask 
@@ -51,13 +53,14 @@ class CheckTask extends AsyncTask
 	 * @param String $ip 
 	 * @param String $user
 	 * @param String $token
-	 * @param Callable (String $username, ? Player $player, bool $isSafe)
+	 * @param Callable (String $username, String $ip, ? Player $player, bool $isSafe)
  	**/
 	public function __construct(String $ip, String $user, String $token, callable $callback) 
 	{
 		$this->ip = $ip;
 		$this->username = $user;
 		$this->token = $token;
+		$this->storeLocal('call', $callback);
 	}
 	
 	public function onRun() : void
@@ -109,7 +112,12 @@ class CheckTask extends AsyncTask
 		{
 			if ($result[0] == self::SUCESS)
 			{
-				
+				$player = $server->getPlayerExact($this->username);
+				$call = $this->fetchLocal('call');
+				if (is_callable($call))
+				{
+					$call($this->username, $this->ip, $player, $result[1]);
+				}
 			} else {
 				switch ($errorCode = $result[0])
 				{
