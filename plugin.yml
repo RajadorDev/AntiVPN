@@ -16,4 +16,7 @@ permissions:
   antivpn.command.whitelist:
     description: 'Manage whitelist'
     default: op
+  antivpn.alert.receive:
+    description: 'See alerts'
+    default: op
 ...
