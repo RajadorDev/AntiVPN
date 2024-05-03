@@ -6,4 +6,8 @@ main: AntiVPN\Manager
 author: Rajador 
 description: 'Protect your server of proxy.'
 website: 'github.com/RajadorDev'
+permissions:
+  antivpn.command:
+    description: 'AntiVPN admin command permission'
+    default: op
 ...
