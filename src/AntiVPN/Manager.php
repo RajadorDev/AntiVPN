@@ -165,6 +165,11 @@ final class Manager extends PluginBase
 		return false;
 	}
 	
+	public function addCachedValue(String $ip, bool $result) : void 
+	{
+		$this->getCacheList()->set($ip, $result);
+	}
+	
 	public function setKey(String $newKey) : void 
 	{
 		$this->key = $newKey;
