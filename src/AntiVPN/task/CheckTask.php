@@ -84,7 +84,7 @@ class CheckTask extends AsyncTask
 						{
 							$data = $data[AntiVPNAPI::CHECK_INDEX];
 							$willBlock = $data['vpn'] || $data['proxy'];
-							$this->setResult([self::SUCESS, $willBlock]);
+							$this->setResult([self::SUCESS, !$willBlock]);
 						} else if (isset($data[AntiVPNAPI::CHECK_ERROR_INDEX])) {
 							$this->setResult([self::FAIL_API, $data[AntiVPNAPI::CHECK_ERROR_INDEX]]);
 						} else {
