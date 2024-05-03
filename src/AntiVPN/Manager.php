@@ -19,6 +19,10 @@ declare (strict_types = 1);
 
 namespace AntiVPN;
 
+use AntiVPN\utils\AntiVPNAPI;
+
+use AntiVPN\command\AntiVPNCommand;
+
 use pocketmine\plugin\PluginBase;
 
 use pocketmine\utils\Config;
@@ -40,6 +44,9 @@ final class Manager extends PluginBase
 	/** @var bool **/
 	private bool $hasBlackList = true;
 	
+	/** @var String | null **/
+	private ? String $key = null;
+	
 	public static function getInstance() : self 
 	{
 		return self::$instance;
@@ -57,6 +64,8 @@ final class Manager extends PluginBase
 		$this->loadPreferences();
 		$this->getLogger()->info('Loading command...');
 		$this->initCommand();
+		$this->getLogger()->info('Loading key...');
+		$this->loadKey();
 	}
 	
 	public function onDisable() : void 
@@ -70,6 +79,7 @@ final class Manager extends PluginBase
 	private function initResource() : void 
 	{
 		$this->saveResource('config.yml', false);
+		$this->saveResource('key.txt', false);
 	}
 	
 	private function loadPreferences() : void 
@@ -88,7 +98,19 @@ final class Manager extends PluginBase
 	
 	private function initCommand() : void 
 	{
-		
+		$this->getServer()->getCommandMap()->register('antivpn', new AntiVPNCommand());
+	}
+	
+	private function loadKey() : void 
+	{
+		$key = file_get_contents($this->getDataFolder() . 'key.txt');
+		if (AntiVPNAPI::isValidKey($key))
+		{
+			$this->key = $key;
+			$this->getLogger()->info('Key loaded suceffully.');
+		} else {
+			$this->getLogger()->warning('Key: "' . $key . '" is not a valid key! Please set your antivpn.com key using: /antivpn setkey <your_key>');
+		}
 	}
 	
 	public function getConfigValue(String $id, mixed $default) : mixed 
@@ -132,6 +154,11 @@ final class Manager extends PluginBase
 			$player = $player->getName();
 		}
 		return $this->isBlackListEnabled() && $this->blackList->exists($player, true);
+	}
+	
+	public function setKey(String $newKey) : void 
+	{
+		
 	}
 	
 }
