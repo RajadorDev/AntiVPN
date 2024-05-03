@@ -44,7 +44,25 @@ final class AntiVPNCommand extends Command
 	
 	public function execute(CommandSender $p, String $label, array $args) 
 	{
-		
+		if ($this->testPermission($p))
+		{
+			if (isset($args[0]) && trim($args[0]) != '')
+			{
+				switch (strtolower($args[0]))
+				{
+					default:
+						$this->showUsageTo($p, $label);
+					break;
+				}
+			} else {
+				$this->showUsageTo($p, $label);
+			}
+		}
+	}
+	
+	public function showUsageTo(CommandSender $p, String $label) : void 
+	{
+		$p->sendMessage(str_replace('{command_label}', $label, $this->getUsage()));
 	}
 	
 }
