@@ -7,4 +7,9 @@ enable-cache: true
 alert-admins: true
 alert-admin-message: '§6Anti§cVPN  §r§7Player §f{player}§7 was §cBlocked§7 by AntiVPN System.'
 
+# Will be send to players that is kicked out by VPN/Proxy use 
+kick-screen-message: "§cYou can't use VPN here."
+
+
+
 ...
