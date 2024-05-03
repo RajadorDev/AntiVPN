@@ -1,7 +1,7 @@
 ---
 
 # If true, every ips with proxy will be save to the next check (recomended)
-save-blacklist: true
+enable-cache: true
 
 # Alert admins when some player join with proxy detected?
 alert-admins: true
