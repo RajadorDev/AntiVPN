@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace jojoe77777\FormAPI;
+namespace AntiVPN\libs\form;
 
 use InvalidArgumentException;
 use pocketmine\form\Form as IForm;
