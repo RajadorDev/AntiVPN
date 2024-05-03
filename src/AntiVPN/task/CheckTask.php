@@ -39,6 +39,11 @@ class CheckTask extends AsyncTask
 		$this->token = $token;
 	}
 	
+	public function onRun() : void
+	{
+		
+	}
+	
 }
 
 ?>
