@@ -1,0 +1,6 @@
+---
+
+# If true, every ips with proxy will be save to the next check (recomended)
+save-blacklist: true
+
+...
