@@ -19,7 +19,7 @@ declare (strict_types = 1);
 
 namespace AntiVPN;
 
-use AntiVPN\event\StartCheckEvent;
+use AntiVPN\event\{StartCheckEvent, PlayerBlockedEvent};
 
 use pocketmine\event\Listener;
 
@@ -63,6 +63,17 @@ final class EventsListener implements Listener
 			} else {
 				$this->manager->startCheck($player);
 			}
+			
+			if ($e->isCancelled())
+			{
+				$event = new PlayerBlockedEvent($player);
+				$event->call();
+				if ($event->isCancelled())
+				{
+					$e->uncancel();
+				}
+			}
+			
 		}
 	}
 	
