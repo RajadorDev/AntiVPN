@@ -19,6 +19,8 @@ declare (strict_types = 1);
 
 namespace AntiVPN;
 
+use AntiVPN\event\StartCheckEvent;
+
 use pocketmine\event\Listener;
 
 use pocketmine\event\player\PlayerLoginEvent;
@@ -63,6 +65,23 @@ final class EventsListener implements Listener
 			}
 		}
 	}
+	
+	/**
+	 * @priority LOW
+ 	**/
+	public function start(StartCheckEvent $e) 
+	{
+		if (!$e->isCancelled())
+		{
+			$player = $e->getPlayer();
+			if ($this->manager->isWhiteListed($player))
+			{
+				$e->cancel();
+				$this->manager->getLogger()->info('Player ' . $player->getName() . ' was allowed to join by whitelist.');
+			}
+		}
+	}
+	
 }
 
 ?>
