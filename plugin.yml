@@ -13,4 +13,7 @@ permissions:
   antivpn.command.setkey:
     description: 'Set api key'
     default: op
+  antivpn.command.whitelist:
+    description: 'Manage whitelist'
+    default: op
 ...
