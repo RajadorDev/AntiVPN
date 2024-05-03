@@ -36,13 +36,13 @@ final class Manager extends PluginBase
 	private Config $whiteList;
 	
 	/** @var Config | null **/
-	private ? Config $blackList = null;
+	private ? Config $cache = null;
 	
 	/** @var Manager **/
 	private Manager $instance;
 	
 	/** @var bool **/
-	private bool $hasBlackList = true;
+	private bool $hasCacheEnabled = true;
 	
 	/** @var String | null **/
 	private ? String $key = null;
@@ -70,9 +70,9 @@ final class Manager extends PluginBase
 	
 	public function onDisable() : void 
 	{
-		if ($this->isBlackListEnabled())
+		if ($this->isCacheEnabled())
 		{
-			$this->getBlackList()->save();
+			$this->getCacheList()->save();
 		}
 	}
 	
@@ -84,15 +84,15 @@ final class Manager extends PluginBase
 	
 	private function loadPreferences() : void 
 	{
-		$hasBlackList = $this->getConfigValue('save-blacklist') == 'true';
-		$this->hasBlackList = $hasBlackList;
-		if ($hasBlackList)
+		$hasCacheEnabled = $this->getConfigValue('enable-cache') == 'true';
+		$this->hasCacheEnabled = $hasCacheEnabled;
+		if ($hasCacheEnabled)
 		{
-			$dir = $this->getDataFolder() . 'blacklist.txt';
-			$this->blackList = new Config($dir, Config::ENUM);
-			$this->getLogger()->info('Blacklist cache enabled.');
+			$dir = $this->getDataFolder() . 'cache.json';
+			$this->cache = new Config($dir, Config::JSON);
+			$this->getLogger()->info('Cache enabled.');
 		} else {
-			$this->getLogger()->info('Blacklist cache disabled.');
+			$this->getLogger()->info('Cache disabled.');
 		}
 	}
 	
@@ -123,14 +123,14 @@ final class Manager extends PluginBase
 		return $default;
 	}
 	
-	public function isBlackListEnabled() : bool 
+	public function isCacheEnabled() : bool 
 	{
-		return $this->hasBlackList;
+		return $this->hasCacheEnabled;
 	}
 	
-	public function getBlackList() : ? Config 
+	public function getCacheList() : ? Config 
 	{
-		return $this->hasBlackList;
+		return $this->cache;
 	}
 	
 	public function getWhiteList() : Config 
@@ -145,15 +145,6 @@ final class Manager extends PluginBase
 			$player = $player->getName();
 		}
 		return $this->whiteList->exists($player, true);
-	}
-	
-	public function isBlacklisted(Player | String $player) : bool 
-	{
-		if ($player instanceof Player)
-		{
-			$player = $player->getName();
-		}
-		return $this->isBlackListEnabled() && $this->blackList->exists($player, true);
 	}
 	
 	public function setKey(String $newKey) : void 
@@ -173,6 +164,11 @@ final class Manager extends PluginBase
 	{
 		$message = (string) $this->getConfigValue('kick-screen-message', '§cYou can\'t use vpn here!');
 		return str_replace('{player}', $playerName, $message);
+	}
+	
+	public function startCheck(Player $player) : bool
+	{
+		
 	}
 	
 }
