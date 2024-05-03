@@ -55,6 +55,8 @@ final class Manager extends PluginBase
 		$this->getLogger()->info('Loading preferences...');
 		$this->initResource();
 		$this->loadPreferences();
+		$this->getLogger()->info('Loading command...');
+		$this->initCommand();
 	}
 	
 	public function onDisable() : void 
@@ -65,7 +67,7 @@ final class Manager extends PluginBase
 		}
 	}
 	
-	public function initResource() : void 
+	private function initResource() : void 
 	{
 		$this->saveResource('config.yml', false);
 	}
@@ -82,6 +84,11 @@ final class Manager extends PluginBase
 		} else {
 			$this->getLogger()->info('Blacklist cache disabled.');
 		}
+	}
+	
+	private function initCommand() : void 
+	{
+		
 	}
 	
 	public function getConfigValue(String $id, mixed $default) : mixed 
