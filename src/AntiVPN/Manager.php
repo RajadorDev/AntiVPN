@@ -158,7 +158,15 @@ final class Manager extends PluginBase
 	
 	public function setKey(String $newKey) : void 
 	{
-		
+		$this->key = $newKey;
+	}
+	
+	public function saveKey() : void 
+	{
+		if (!empty($this->key))
+		{
+			file_put_contents($this->getDataFolder() . 'key.txt', $this->key);
+		}
 	}
 	
 }
