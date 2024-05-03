@@ -26,6 +26,8 @@ use pocketmine\command\{Command, CommandSender};
 final class AntiVPNCommand extends Command 
 {
 	
+	const COMMAND_PREFIX = '§6Anti§cVPN§r  ';
+	
 	/** @var Manager **/
 	private Manager $manager;
 	
@@ -50,6 +52,20 @@ final class AntiVPNCommand extends Command
 			{
 				switch (strtolower($args[0]))
 				{
+					case 'key':
+					case 'secret':
+					case 'setkey':
+					case 'setsecret':
+						if ($this->testPermission($p, 'antivpn.command.secret'))
+						{
+							if (isset($args[1]) && trim($args[1]) != '')
+							{
+								
+							} else {
+								$p->sendMessage(self::COMMAND_PREFIX . "§7Use: §f/{$label} {$args[0]} <key>");
+							}
+						}
+					break;
 					default:
 						$this->showUsageTo($p, $label);
 					break;
