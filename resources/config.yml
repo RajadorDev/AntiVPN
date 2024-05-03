@@ -5,5 +5,6 @@ save-blacklist: true
 
 # Alert admins when some player join with proxy detected?
 alert-admins: true
+alert-admin-message: '§6Anti§cVPN  §r§7Player §f{player}§7 was §cBlocked§7 by AntiVPN System.'
 
 ...
