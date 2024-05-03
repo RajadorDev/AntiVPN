@@ -109,6 +109,24 @@ final class Manager extends PluginBase
 		return $this->whiteList;
 	}
 	
+	public function isWhiteListed(Player | String $player) : bool 
+	{
+		if ($player instanceof Player)
+		{
+			$player = $player->getName();
+		}
+		return $this->whiteList->exists($player, true);
+	}
+	
+	public function isBlacklisted(Player | String $player) : bool 
+	{
+		if ($player instanceof Player)
+		{
+			$player = $player->getName();
+		}
+		return $this->isBlackListEnabled() && $this->blackList->exists($player, true);
+	}
+	
 }
 
 ?>
