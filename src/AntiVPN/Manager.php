@@ -21,6 +21,8 @@ namespace AntiVPN;
 
 use AntiVPN\utils\AntiVPNAPI;
 
+use AntiVPN\event\StartCheckEvent;
+
 use AntiVPN\command\AntiVPNCommand;
 
 use pocketmine\plugin\PluginBase;
@@ -182,9 +184,16 @@ final class Manager extends PluginBase
 		return str_replace('{player}', $playerName, $message);
 	}
 	
-	public function startCheck(Player $player) : bool
+	public function startCheck(Player $player, callable | null $call = null) : bool
 	{
-		
+		$ev = new StartCheckEvent($player);
+		$ev->call();
+		if (!$ev->isCancelled())
+		{
+			
+			return true;
+		}
+		return false;
 	}
 	
 }
