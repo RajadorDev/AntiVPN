@@ -34,6 +34,28 @@ final class EventsListener implements Listener
 		$manager->getPluginManager()->registerEvents($this, $manager);
 	}
 	
+	/**
+	 * @priority HIGHEST
+ 	**/
+	public function checkVpn(PlayerLoginEvent $e)
+	{
+		if (!$e->isCancelled())
+		{
+			$player = $e->getPlayer();
+			if ($this->isBlackListEnabled())
+			{
+				if ($this->manager->isBlacklisted($player))
+				{
+					$e->cancel();
+					$e->setKickMessage($this->manager->getKickScreenMessage($player->getName()));
+				} else {
+					$this->manager->startCheck($player);
+				}
+			} else {
+				$this->manager->startCheck($player);
+			}
+		}
+	}
 }
 
 ?>
