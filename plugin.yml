@@ -19,4 +19,7 @@ permissions:
   antivpn.alert.receive:
     description: 'See alerts'
     default: op
+  antivpn.bypass:
+    description: 'Be ignored by AntiVPN System'
+    default: false
 ...
