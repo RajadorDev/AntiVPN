@@ -169,6 +169,11 @@ final class Manager extends PluginBase
 		}
 	}
 	
+	public function getKickScreenMessage() : String 
+	{
+		return (string) $this->getConfigValue('kick-screen-message', '§cYou can\'t use vpn here!');
+	}
+	
 }
 
 ?>
