@@ -97,6 +97,11 @@ final class Manager extends PluginBase
 		return $this->hasBlackList;
 	}
 	
+	public function getWhiteList() : Config 
+	{
+		return $this->whiteList;
+	}
+	
 }
 
 ?>
