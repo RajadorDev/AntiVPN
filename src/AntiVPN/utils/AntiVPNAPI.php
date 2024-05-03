@@ -21,6 +21,8 @@ namespace AntiVPN\utils;
 
 use AntiVPN\Manager;
 
+use AntiVPN\event\PlayerBlockedEvent;
+
 use pocketmine\Server;
 
 use pocketmine\player\Player;
@@ -48,7 +50,10 @@ final class AntiVPNAPI
 	{
 		return function (String $username, String $ip, ? Player $player, bool $isSafe) : void 
 		{
-			Manager::getInstance()->addCachedValue($ip, $isSafe);
+			if (Manager::getInstance()->isCacheEnabled())
+			{
+				Manager::getInstance()->addCachedValue($ip, $isSafe);
+			}
 			if ($player instanceof Player)
 			{
 				$username = $player->getName();
