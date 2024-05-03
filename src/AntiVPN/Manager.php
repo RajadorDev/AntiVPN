@@ -147,6 +147,22 @@ final class Manager extends PluginBase
 		return $this->whiteList->exists($player, true);
 	}
 	
+	public function inCache(Player $player) : bool 
+	{
+		$address = $player->getNetworkSession()->getIp();
+		return $this->getCacheList()->exists($address);
+	}
+	
+	public function getCacheValue(Player $player) : bool 
+	{
+		if ($this->inCache($player))
+		{
+			$adr = $player->getNetworkSession()->getIp();
+			return $this->getCacheList()->get($adr, false) == 'true';
+		}
+		return false;
+	}
+	
 	public function setKey(String $newKey) : void 
 	{
 		$this->key = $newKey;
