@@ -44,12 +44,17 @@ final class EventsListener implements Listener
 		if (!$e->isCancelled())
 		{
 			$player = $e->getPlayer();
-			if ($this->isBlackListEnabled())
+			if ($this->isCacheEnabled())
 			{
-				if ($this->manager->isBlacklisted($player))
+				if ($this->manager->inCache($player))
 				{
-					$e->cancel();
-					$e->setKickMessage($this->manager->getKickScreenMessage($player->getName()));
+					if (!$this->manager->getCacheValue($player))
+					{
+						$e->cancel();
+						$e->setKickMessage($this->manager->getKickScreenMessage($player->getName()));
+					} else {
+						$this->manager->startCheck($player);
+					}
 				} else {
 					$this->manager->startCheck($player);
 				}
