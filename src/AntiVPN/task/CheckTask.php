@@ -107,7 +107,7 @@ class CheckTask extends AsyncTask
 		}
 	}
 	
-	public function onCompletion(Server $server) 
+	public function onCompletion(Server $server) : void
 	{
 		$result = $this->getResult();
 		if (is_array($result) && isset($result[0]))
