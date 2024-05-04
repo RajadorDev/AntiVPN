@@ -21,6 +21,8 @@ namespace AntiVPN;
 
 use AntiVPN\event\{StartCheckEvent, PlayerBlockedEvent, FinishCheckEvent};
 
+use AntiVPN\utils\AntiVPNAPI;
+
 use pocketmine\event\Listener;
 
 use pocketmine\event\player\PlayerLoginEvent;
@@ -55,13 +57,13 @@ final class EventsListener implements Listener
 						$e->cancel();
 						$e->setKickMessage($this->manager->getKickScreenMessage($player->getName()));
 					} else {
-						$this->manager->startCheck($player);
+						$this->manager->startCheck($player, AntiVPNAPI::getDefaultProcess());
 					}
 				} else {
-					$this->manager->startCheck($player);
+					$this->manager->startCheck($player, AntiVPNAPI::getDefaultProcess());
 				}
 			} else {
-				$this->manager->startCheck($player);
+				$this->manager->startCheck($player, AntiVPNAPI::getDefaultProcess());
 			}
 			
 			if ($e->isCancelled())
