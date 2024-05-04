@@ -53,6 +53,7 @@ class WhiteListMainForm extends SimpleForm
 			}
 		);
 		$this->setTitle('§6Anti§cVPN §fWhiteList');
+		$this->setContent('§7Select a option bellow:');
 		foreach 
 		(
 			[
