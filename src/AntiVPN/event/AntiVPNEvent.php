@@ -41,6 +41,11 @@ abstract class AntiVPNEvent extends PlayerEvent
 		return Manager::getInstance();
 	}
 	
+	public function getIp() : String 
+	{
+		return $this->getPlayer()->getNetworkSession()->getIp();
+	}
+	
 }
 
 ?>
