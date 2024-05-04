@@ -71,6 +71,8 @@ final class Manager extends PluginBase
 		$this->initCommand();
 		$this->getLogger()->info('Loading key...');
 		$this->loadKey();
+		$this->getLogger()->info('Loading Listener...');
+		(new EventsListener($this));
 	}
 	
 	public function onDisable() : void 
