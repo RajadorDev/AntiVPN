@@ -79,6 +79,10 @@ final class Manager extends PluginBase
 		{
 			$this->getCacheList()->save();
 		}
+		if ($this->whiteList instanceof Config) 
+		{
+			$this->whiteList->save();
+		}
 	}
 	
 	private function initResource() : void 
