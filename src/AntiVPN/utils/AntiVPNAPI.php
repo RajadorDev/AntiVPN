@@ -43,7 +43,7 @@ final class AntiVPNAPI
 	
 	public static function makeUrl(String $adr, String $token) : String 
 	{
-		return self::API . $adr . '?key=' . $token;
+		return self::URL . $adr . '?key=' . $token;
 	}
 	
 	public static function getDefaultProcess() : callable 
