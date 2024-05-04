@@ -54,12 +54,12 @@ final class AntiVPNAPI
 			{
 				Manager::getInstance()->addCachedValue($ip, $isSafe);
 			}
-			if ($player instanceof Player)
+			if (!$isSafe && $player instanceof Player)
 			{
 				$username = $player->getName();
 				$player->kick('IP proxy/vpn detected', null, Manager::getInstance()->getKickScreenMessage($username));
 				$message = Manager::getInstance()->getAdminAlertMessage($username);
-				foreach (Server::getInstance()->getPlayers() as $all)
+				foreach (Server::getInstance()->getOnlinePlayers() as $all)
 				{
 					if ($all->hasPermission('antivpn.alert.receive'))
 					{
