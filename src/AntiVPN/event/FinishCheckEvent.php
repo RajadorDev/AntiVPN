@@ -24,7 +24,7 @@ use pocketmine\event\Event;
 class FinishCheckEvent extends Event 
 {
 	
-	public function __construct(protected String $ip, protected String $username) {}
+	public function __construct(protected String $ip, protected String $username, private bool $isSafe) {}
 	
 	public function getUsername() : String 
 	{
@@ -34,6 +34,11 @@ class FinishCheckEvent extends Event
 	public function getIp() : String 
 	{
 		return $this->ip;
+	}
+	
+	public function isSafe() : bool 
+	{
+		return $this->isSafe;
 	}
 	
 }
