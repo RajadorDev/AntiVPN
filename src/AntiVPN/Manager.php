@@ -152,6 +152,15 @@ final class Manager extends PluginBase
 		return $this->whiteList->exists($player, true);
 	}
 	
+	public function addWhitelisted(String | Player $player) : void 
+	{
+		if ($player instanceof Player)
+		{
+			$player = $player->getName();
+		}
+		$this->whiteList->set(strtolower($player));
+	}
+	
 	public function inCache(Player $player) : bool 
 	{
 		$address = $player->getNetworkSession()->getIp();
