@@ -19,6 +19,8 @@ declare (strict_types = 1);
 
 namespace AntiVPN\form;
 
+use AntiVPN\Manager;
+
 use AntiVPN\libs\form\SimpleForm;
 
 use pocketmine\player\Player;
@@ -41,13 +43,15 @@ class WhiteListMainForm extends SimpleForm
 				switch ($data)
 				{
 					case self::ADD:
-						
+						$form = new AddPlayerForm($player);
+						$form->sendToPlayer($player);
 					break;
 					case self::REMOVE:
-						
+						$form = new RemovePlayerForm();
+						$form->sendToPlayer($player);
 					break;
 					case self::LIST:
-						
+						Manager::sendWhiteList($player);
 					break;
 				}
 			}
