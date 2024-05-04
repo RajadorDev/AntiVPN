@@ -281,8 +281,13 @@ final class Manager extends PluginBase
 	public static function sendWhiteList(Player $player) : void 
 	{
 		$list = Manager::getInstance()->getWhiteList()->getAll(true);
-		$list = implode('§r, ', $list);
-		$player->sendMessage(AntiVPNCommand::COMMAND_PREFIX . '§7Whitelisted players: §f' . $list);
+		if (count($list) > 0)
+		{
+			$list = implode('§r, ', $list);
+			$player->sendMessage(AntiVPNCommand::COMMAND_PREFIX . '§7Whitelisted players: §f' . $list);
+		} else {
+			$player->sendMessage(AntiVPNCommand::COMMAND_PREFIX . '§7WhiteList is empty!');
+		}
 	}
 	
 }
