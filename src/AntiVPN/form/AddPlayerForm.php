@@ -19,13 +19,13 @@ declare (strict_types = 1);
 
 namespace AntiVPN\form;
 
-use AntiVPN\libs\form\SimpleForm;
+use AntiVPN\libs\form\CustomForm;
 
 use pocketmine\Server;
 
 use pocketmine\player\Player;
 
-class AddPlayerForm extends SimpleForm 
+class AddPlayerForm extends CustomForm
 {
 	
 	const TARGET = 'player_name';
