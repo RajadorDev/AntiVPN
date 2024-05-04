@@ -261,7 +261,7 @@ final class Manager extends PluginBase
 		
 		if (!$this->hasKey())
 		{
-			$this->getLogger()->warning('Trying to check address, but theres no api key setted!');
+			$this->getLogger()->warning('trying to check address, but theres no api key setted!');
 			return false;
 		} else if ($this->inProcess($ip = $player->getNetworkSession()->getIp())) {
 			$this->getLogger()->debug('tring to check ip ' . $ip . ' but this ip already is checking by the system.');
