@@ -41,7 +41,7 @@ final class Manager extends PluginBase
 	private ? Config $cache = null;
 	
 	/** @var Manager **/
-	private Manager $instance;
+	private static Manager $instance;
 	
 	/** @var bool **/
 	private bool $hasCacheEnabled = true;
