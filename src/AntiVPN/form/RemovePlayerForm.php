@@ -21,6 +21,8 @@ namespace AntiVPN\form;
 
 use pocketmine\player\Player;
 
+use AntiVPN\Manager;
+
 use AntiVPN\libs\form\CustomForm;
 
 class RemovePlayerForm extends CustomForm 
@@ -34,7 +36,22 @@ class RemovePlayerForm extends CustomForm
 		(
 			function (Player $player, mixed $data) : void 
 			{
-				
+				if (is_array($data))
+				{
+					if (isset($data[self::TARGET]))
+					{
+						$list = Manager::getInstance()->getWhiteList()->getAll(true);
+						$id = $data[self::TARGET];
+						if (isset($list[$id]))
+						{
+							$id = $list[$id];
+							Manager::getInstance()->getWhiteList()->remove($id);
+							$player->sendMessage("§7User $id §7removed §a§lSuceffully§r§7.");
+						} else {
+							$player->sendMessage('§cUser not found!');
+						}
+					}
+				}
 			}
 		);
 		
