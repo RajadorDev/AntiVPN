@@ -93,6 +93,17 @@ final class EventsListener implements Listener
 		}
 	}
 	
+	/**
+	 * @priority MONITOR
+ 	**/
+	public function addProcess(StartCheckEvent $e) 
+	{
+		if (!$e->isCancelled())
+		{
+			$this->manager->addInProcess($e->getIp());
+		}
+	}
+	
 }
 
 ?>
