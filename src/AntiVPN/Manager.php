@@ -69,6 +69,8 @@ final class Manager extends PluginBase
 		$this->getLogger()->info('Loading preferences...');
 		$this->initResource();
 		$this->loadPreferences();
+		$this->getLogger()->info('Loading WhiteList...');
+		$this->initWhiteList();
 		$this->getLogger()->info('Loading command...');
 		$this->initCommand();
 		$this->getLogger()->info('Loading key...');
@@ -106,6 +108,18 @@ final class Manager extends PluginBase
 			$this->getLogger()->info('Cache enabled.');
 		} else {
 			$this->getLogger()->info('Cache disabled.');
+		}
+	}
+	
+	private function initWhiteList() : void 
+	{
+		$this->whiteList = new Config('whitelist.txt', Config::ENUM);
+		$this->getLogger()->info('WhiteList loaded suceffully.');
+		if (($c count($this->whiteList->getAll())) > 0)
+		{
+			$this->getLogger()->info('You can add players that will be ignored by this system using: /antivpn wl add <player_name>');
+		} else {
+			$this->getLogger()->info('Theres ' . $c . ' players whitelisted.');
 		}
 	}
 	
