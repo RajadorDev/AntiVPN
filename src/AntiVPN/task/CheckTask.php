@@ -36,6 +36,8 @@ use pocketmine\scheduler\AsyncTask;
 class CheckTask extends AsyncTask 
 {
 	
+	const TIMEOUT = 5;
+	
 	const FAIL_CURL_INIT = 0;
 	
 	const FAIL_CURL_EXECUTE = 1;
@@ -74,6 +76,7 @@ class CheckTask extends AsyncTask
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 			curl_setopt($curl, CURLOPT_SSL_VERIFYSTATUS, false);
+			curl_setopt($curl, CURLOPT_TIMEOUT, self::TIMEOUT);
 			$response = curl_exec($curl);
 			if (($errorCode = curl_errno($curl)) == 0)
 			{
