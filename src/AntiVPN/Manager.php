@@ -113,7 +113,7 @@ final class Manager extends PluginBase
 	
 	private function initWhiteList() : void 
 	{
-		$this->whiteList = new Config('whitelist.txt', Config::ENUM);
+		$this->whiteList = new Config($this->getDataFolder() .  'whitelist.txt', Config::ENUM);
 		$this->getLogger()->info('WhiteList loaded suceffully.');
 		if (($c = count($this->whiteList->getAll())) > 0)
 		{
