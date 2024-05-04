@@ -49,6 +49,9 @@ final class Manager extends PluginBase
 	/** @var String | null **/
 	private ? String $key = null;
 	
+	/** @var String[] **/
+	private array $inProcess = array();
+	
 	public static function getInstance() : self 
 	{
 		return self::$instance;
@@ -200,12 +203,37 @@ final class Manager extends PluginBase
 		return str_replace('{player}', $playerName, $message);
 	}
 	
+	public function addInProcess(String $ip) : void 
+	{
+		if (!in_array($ip, $this->inProcess))
+		{
+			$this->inProcess[] = $ip;
+		}
+	}
+	
+	public function inProcess(String $ip) : bool 
+	{
+		return in_array($ip, $this->inProcess);
+	}
+	
+	public function removeFromProcess(String $ip) : void 
+	{
+		if (in_array($ip, $this->inProcess))
+		{
+			$id = array_search($ip, $this->inProcess);
+			unset($this->inProcess[$id]);
+		}
+	}
+	
 	public function startCheck(Player $player, callable $call) : bool
 	{
 		
 		if (!$this->hasKey())
 		{
 			$this->getLogger()->warning('Trying to check address, but theres no api key setted!');
+			return false;
+		} else if ($this->inProcess($ip = $player->getNetworkSession()->getIp())) {
+			$this->getLogger()->debug('tring to check ip ' . $ip . ' but this ip already is checking by the system.');
 			return false;
 		}
 		
