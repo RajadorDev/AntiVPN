@@ -46,7 +46,7 @@ final class EventsListener implements Listener
 		if (!$e->isCancelled())
 		{
 			$player = $e->getPlayer();
-			if ($this->isCacheEnabled())
+			if ($this->manager->isCacheEnabled())
 			{
 				if ($this->manager->inCache($player))
 				{
@@ -101,6 +101,7 @@ final class EventsListener implements Listener
 		if (!$e->isCancelled())
 		{
 			$this->manager->addInProcess($e->getIp());
+			$this->manager->getLogger()->debug('Checking ' . $e->getIp() . ' ...');
 		}
 	}
 	
