@@ -23,7 +23,7 @@ use AntiVPN\libs\form\ModalForm;
 
 use pocketmine\player\Player;
 
-final class ConfirmForm extends ModalForm 
+abstract class ConfirmForm extends ModalForm 
 {
 	
 	public function __construct(String $title, String $description, String $buttonConfirmText, String $buttonDeclineText) 
