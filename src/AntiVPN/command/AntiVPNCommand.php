@@ -142,7 +142,12 @@ final class AntiVPNCommand extends Command
 												$p->sendMessage(self::COMMAND_PREFIX . "§7Player §f{$user} §7is not whitelisted!");
 											}
 										} else if ($p instanceof Player) {
-											(new RemovePlayerForm)->sendToPlayer($p);
+											if (count($this->manager->getWhiteList()->getAll()) > 0)
+											{
+												(new RemovePlayerForm)->sendToPlayer($p);
+											} else {
+												$p->sendMessage(self::COMMAND_PREFIX . '§7Theres no players added in WhiteList.');
+											}
 										} else {
 											$p->sendMessage(self::COMMAND_PREFIX . "§7To remove player use: §f/{$label} {$args[0]} {$args[1]} <player_name>");
 										}
