@@ -214,6 +214,11 @@ final class Manager extends PluginBase
 		$this->key = $newKey;
 	}
 	
+	public function getKey() : ? String 
+	{
+		return $this->key;
+	}
+	
 	public function saveKey() : void 
 	{
 		if (!empty($this->key))
