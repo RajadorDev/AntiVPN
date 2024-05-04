@@ -25,6 +25,8 @@ use AntiVPN\utils\AntiVPNAPI;
 
 use AntiVPN\form\{WhiteListMainForm, ConfirmAddWhiteListForm, RemovePlayerForm};
 
+use pocketmine\Server;
+
 use pocketmine\player\Player;
 
 use pocketmine\command\{Command, CommandSender};
@@ -103,7 +105,27 @@ final class AntiVPNCommand extends Command
 									case 'add':
 									case 'set':
 									case 'new':
-										
+										if (isset($args[2]) && trim($args[2]) != '')
+										{
+											$target = Server::getInstance()->getPlayerExact($name = $args[2]);
+											if ($target instanceof Player) 
+											{
+												$name = $target->getName();
+											}
+											
+											if ($p instanceof Player) 
+											{
+												(new ConfirmAddWhiteListForm($name))->sendToPlayer($p);
+											} else {
+												$this->manager->addWhitelisted($name);
+												$p->sendMessage(self::COMMAND_PREFIX . '§7Player §f' . $name . ' §7added to whitelist §a§lSuceffully§r§7.');
+											}
+											
+										} else if ($p instanceof Player) {
+											(new AddPlayerForm($p))->sendToPlayer($p);
+										} else {
+											$p->sendMessage(self::COMMAND_PREFIX . "§7To add whitelisted player use: §f/{$commandLabel} {$args[0]} {$args[1]} <player_name>");
+										}
 									break;
 									case 'remove':
 									case 'delete':
@@ -142,9 +164,16 @@ final class AntiVPNCommand extends Command
 						}
 					break;
 					default:
-						$this->showUsageTo($p, $label);
+						if ($p instanceof Player)
+						{
+							(new WhiteListMainForm())->sendToPlayer($p);
+						} else {
+							$this->showUsageTo($p, $label);
+						}
 					break;
 				}
+			} else if ($p instanceof Player) {
+				(new WhiteListMainForm())->sendToPlayer($p);
 			} else {
 				$this->showUsageTo($p, $label);
 			}
