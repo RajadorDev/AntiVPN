@@ -46,7 +46,8 @@ class AddPlayerForm extends SimpleForm
 						{
 							$username = $target->getName();
 						}
-						
+						$form = new ConfirmAddWhiteListForm($username);
+						$form->sendToPlayer($player);
 					} 
 				}
 			}
