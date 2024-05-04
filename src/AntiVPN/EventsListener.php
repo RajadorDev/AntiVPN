@@ -35,7 +35,7 @@ final class EventsListener implements Listener
 	{
 		$this->manager = $manager;
 		$manager->getLogger()->info('Registering listener...');
-		$manager->getPluginManager()->registerEvents($this, $manager);
+		$manager->getServer()->getPluginManager()->registerEvents($this, $manager);
 	}
 	
 	/**
