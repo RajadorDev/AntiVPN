@@ -50,12 +50,14 @@ final class EventsListener implements Listener
 			{
 				if ($this->manager->inCache($player))
 				{
+					$playerName = $player->getName();
 					if (!$this->manager->getCacheValue($player))
 					{
 						$e->cancel();
-						$e->setKickMessage($this->manager->getKickScreenMessage($player->getName()));
+						$e->setKickMessage($this->manager->getKickScreenMessage($playerName));
+						$this->manager->getLogger()->debug("Player $playerName is BLOCKED by Cache.");
 					} else {
-						$this->manager->startCheck($player, AntiVPNAPI::getDefaultProcess());
+						$this->manager->getLogger()->debug("Player $playerName is allowed by Cache.");
 					}
 				} else {
 					$this->manager->startCheck($player, AntiVPNAPI::getDefaultProcess());
