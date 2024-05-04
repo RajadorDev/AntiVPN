@@ -29,5 +29,27 @@ After that your plugin will be working to expel players who try to use VPN
 
 ### Command `/antivpn`
 
+- `/antivpn` 
+  - `setkey <key>`: Set your account key (from https://vpnapi.io/)
+  - `whitelist` 
+    - `add`: Add players who will be ignored by the system
+    - `remove`: Remove players who are being ignored
+    - `list`: View the list of players who are being ignored 
 
+### UI 
+
+The whitelist system is configurable via the **UI** (when you execute the command from the game and not from the console)
+
+To access the **UI** just use: `/antivpn whitelist`
+
+### Bypass 
+
+- ⚠️ Players who have permission:` antivpn.bypass` will be ignored just like the** whitelist**
+
+## Author:
+
+- **Rajador**:
+  - ✉**Discord**: `rajadortv`
+  - 📷**Instagram**: `rajadortv`
+  - 📽**YouTube**: [**Channel**](https://www.youtube.com/channel/UC1UJFxth-YRkNuLBqBYyqbA)
 
