@@ -117,9 +117,9 @@ final class EventsListener implements Listener
 		$this->manager->removeFromProcess($ip);
 		if (!$e->isSafe())
 		{
-			$this->getLogger()->notice('Address: ' . $ip . ' of ' . $e->getUsername() . ' is not secure.');
+			$this->manager->getLogger()->notice('Address: ' . $ip . ' of ' . $e->getUsername() . ' is not secure.');
 		} else {
-			$this->getLogger()->debug('Address: ' . $ip . ' is secure.');
+			$this->manager->getLogger()->debug('Address: ' . $ip . ' is secure.');
 		}
 	}
 	
