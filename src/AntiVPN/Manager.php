@@ -254,10 +254,17 @@ final class Manager extends PluginBase
 		$ev->call();
 		if (!$ev->isCancelled())
 		{
-			$this->getScheduler()->scheduleAsyncTask(new CheckTask($player->getNetworkSession()->getIp(), strtolower($player->getName()), $this->getKey(), $call));
+			$this->getScheduler()->scheduleAsyncTask(new CheckTask($ip, strtolower($player->getName()), $this->getKey(), $call));
 			return true;
 		}
 		return false;
+	}
+	
+	public static function sendWhiteList(Player $player) : void 
+	{
+		$list = Manager::getInstance()->getWhiteList()->getAll(true);
+		$list = implode('§r, ', $list);
+		$player->sendMessage(AntiVPNCommand::COMMAND_PREFIX . '§7Whitelisted players: §f' . $list);
 	}
 	
 }
