@@ -120,7 +120,7 @@ final class Manager extends PluginBase
 			$this->key = $key;
 			$this->getLogger()->info('Key loaded suceffully.');
 		} else {
-			$this->getLogger()->warning('Key: "' . $key . '" is not a valid key! Please set your antivpn.com key using: /antivpn setkey <your_key>');
+			$this->getLogger()->warning('Key: "' . $key . '" is not a valid key! Please set your vpnapi.io key using: /antivpn setkey <your_key>');
 		}
 	}
 	
