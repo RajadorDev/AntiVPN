@@ -26,6 +26,8 @@ use AntiVPN\libs\form\CustomForm;
 class RemovePlayerForm extends CustomForm 
 {
 	
+	const TARGET = 'player_name';
+	
 	public function __construct(int $default = 0)
 	{
 		parent::__construct 
@@ -39,7 +41,7 @@ class RemovePlayerForm extends CustomForm
 		$list = Manager::getInstance()->getWhiteList()->getAll(true);
 		
 		$this->setTitle('§cRemove §fWhitelisted §cPlayer');
-		$this->addDropdown('§7Select the player:', $list);
+		$this->addDropdown('§7Select the player:', $list, $default, self::TARGET);
 	}
 	
 }
