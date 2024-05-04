@@ -272,7 +272,7 @@ final class Manager extends PluginBase
 		$ev->call();
 		if (!$ev->isCancelled())
 		{
-			$this->getScheduler()->scheduleAsyncTask(new CheckTask($ip, strtolower($player->getName()), $this->getKey(), $call));
+			$this->getServer()->getAsyncPool()->submitTask(new CheckTask($ip, strtolower($player->getName()), $this->getKey(), $call));
 			return true;
 		}
 		return false;
