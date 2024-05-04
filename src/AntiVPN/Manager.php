@@ -21,6 +21,8 @@ namespace AntiVPN;
 
 use AntiVPN\utils\AntiVPNAPI;
 
+use AntiVPN\task\CheckTask;
+
 use AntiVPN\event\StartCheckEvent;
 
 use AntiVPN\command\AntiVPNCommand;
