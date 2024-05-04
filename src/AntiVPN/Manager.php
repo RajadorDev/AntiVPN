@@ -170,6 +170,11 @@ final class Manager extends PluginBase
 		$this->getCacheList()->set($ip, $result);
 	}
 	
+	public function hasKey() : bool 
+	{
+		return is_string($this->key) && AntiVPNAPI::isValidKey($this->key);
+	}
+	
 	public function setKey(String $newKey) : void 
 	{
 		$this->key = $newKey;
@@ -195,13 +200,20 @@ final class Manager extends PluginBase
 		return str_replace('{player}', $playerName, $message);
 	}
 	
-	public function startCheck(Player $player, callable | null $call = null) : bool
+	public function startCheck(Player $player, callable $call) : bool
 	{
+		
+		if (!$this->hasKey())
+		{
+			$this->getLogger()->warning('Trying to check address, but theres no api key setted!');
+			return false;
+		}
+		
 		$ev = new StartCheckEvent($player);
 		$ev->call();
 		if (!$ev->isCancelled())
 		{
-			
+			$this->getScheduler()->scheduleAsyncTask(new CheckTask($player->getNetworkSession()->getIp(), strtolower($player->getName()), $this->getKey(), $call));
 			return true;
 		}
 		return false;
