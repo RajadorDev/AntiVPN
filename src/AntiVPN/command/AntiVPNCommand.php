@@ -147,6 +147,10 @@ final class AntiVPNCommand extends Command
 											$p->sendMessage(self::COMMAND_PREFIX . "§7To remove player use: §f/{$label} {$args[0]} {$args[1]} <player_name>");
 										}
 									break;
+									case 'list':
+									case 'all':
+										Manager::sendWhiteList($p);
+									break;
 									default:
 										if ($p instanceof Player) 
 										{
