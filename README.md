@@ -49,7 +49,7 @@ To access the **UI** just use: `/antivpn whitelist`
 ## Author:
 
 - **Rajador**:
-  - ✉**Discord**: `rajadortv`
-  - 📷**Instagram**: `rajadortv`
+  - ✉**Discord**: [**My Group**](https://discord.gg/DV5DgDSq7W)
+  - 📷**Instagram**: [**My Instagram**](https://www.instagram.com/rajadortv/)
   - 📽**YouTube**: [**Channel**](https://www.youtube.com/channel/UC1UJFxth-YRkNuLBqBYyqbA)
 
