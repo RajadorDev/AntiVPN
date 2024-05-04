@@ -115,7 +115,7 @@ final class Manager extends PluginBase
 	{
 		$this->whiteList = new Config($this->getDataFolder() .  'whitelist.txt', Config::ENUM);
 		$this->getLogger()->info('WhiteList loaded suceffully.');
-		if (($c = count($this->whiteList->getAll())) > 0)
+		if (($c = count($this->whiteList->getAll())) <= 0)
 		{
 			$this->getLogger()->info('You can add players that will be ignored by this system using: /antivpn wl add <player_name>');
 		} else {
