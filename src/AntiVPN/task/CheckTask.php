@@ -82,9 +82,9 @@ class CheckTask extends AsyncTask
 			{
 				if (is_string($response))
 				{
-					if (json_validate($response))
+					$data = json_decode($response, true);
+					if (json_last_error() == JSON_ERROR_NONE)
 					{
-						$data = json_decode($response, true);
 						if (isset($data[AntiVPNAPI::CHECK_INDEX]))
 						{
 							$data = $data[AntiVPNAPI::CHECK_INDEX];
@@ -96,7 +96,7 @@ class CheckTask extends AsyncTask
 							$this->setResult([self::FAIL_API, 'Unknow error!']);
 						}
 					} else {
-						$this->setResult([self::FAIL_CURL_JSON, 'Invalid json: ' . $response]);
+						$this->setResult([self::FAIL_CURL_JSON, 'Invalid json: ' . json_last_error_msg()]);
 					}
 				} else {
 					$this->setResult([self::FAIL_INVALID_RESPONSE, 'Invalid response type: ' . gettype($response)]);
