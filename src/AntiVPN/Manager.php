@@ -124,7 +124,7 @@ final class Manager extends PluginBase
 		}
 	}
 	
-	public function getConfigValue(String $id, mixed $default) : mixed 
+	public function getConfigValue(String $id, mixed $default = null) : mixed 
 	{
 		if ($this->getConfig()->exists($id))
 		{
