@@ -113,7 +113,14 @@ final class EventsListener implements Listener
  	**/
 	public function finish(FinishCheckEvent $e) : void 
 	{
-		$this->manager->removeFromProcess($e->getIp());
+		$ip = $e->getIp();
+		$this->manager->removeFromProcess($ip);
+		if (!$e->isSafe())
+		{
+			$this->getLogger()->notice('Address: ' . $ip . ' of ' . $e->getUsername() . ' is not secure.');
+		} else {
+			$this->getLogger()->debug('Address: ' . $ip . ' is secure.');
+		}
 	}
 	
 }
