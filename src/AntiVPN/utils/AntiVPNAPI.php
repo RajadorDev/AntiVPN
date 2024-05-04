@@ -67,7 +67,7 @@ final class AntiVPNAPI
 					}
 				}
 			}
-		}
+		};
 	}
 	
 	public static function isProxyOrVpn(array $data) : bool 
