@@ -25,6 +25,8 @@ use AntiVPN\Manager;
 
 use AntiVPN\utils\AntiVPNAPI;
 
+use AntiVPN\event\FinishCheckEvent;
+
 use pocketmine\Server;
 
 use pocketmine\player\Player;
@@ -118,6 +120,7 @@ class CheckTask extends AsyncTask
 				{
 					$call($this->username, $this->ip, $player, $result[1]);
 				}
+				(new FinishCheckEvent($this->ip, $this->username, $result[1]))->call();
 			} else {
 				switch ($errorCode = $result[0])
 				{
