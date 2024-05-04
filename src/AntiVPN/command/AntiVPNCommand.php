@@ -181,8 +181,6 @@ final class AntiVPNCommand extends Command
 						}
 					break;
 				}
-			} else if ($p instanceof Player) {
-				(new WhiteListMainForm())->sendToPlayer($p);
 			} else {
 				$this->showUsageTo($p, $label);
 			}
