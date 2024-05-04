@@ -19,7 +19,7 @@ declare (strict_types = 1);
 
 namespace AntiVPN;
 
-use AntiVPN\event\{StartCheckEvent, PlayerBlockedEvent};
+use AntiVPN\event\{StartCheckEvent, PlayerBlockedEvent, FinishCheckEvent};
 
 use pocketmine\event\Listener;
 
@@ -41,7 +41,7 @@ final class EventsListener implements Listener
 	/**
 	 * @priority HIGHEST
  	**/
-	public function checkVpn(PlayerLoginEvent $e)
+	public function checkVpn(PlayerLoginEvent $e) : void 
 	{
 		if (!$e->isCancelled())
 		{
@@ -80,7 +80,7 @@ final class EventsListener implements Listener
 	/**
 	 * @priority LOW
  	**/
-	public function start(StartCheckEvent $e) 
+	public function start(StartCheckEvent $e) : void 
 	{
 		if (!$e->isCancelled())
 		{
@@ -96,12 +96,20 @@ final class EventsListener implements Listener
 	/**
 	 * @priority MONITOR
  	**/
-	public function addProcess(StartCheckEvent $e) 
+	public function addProcess(StartCheckEvent $e) : void
 	{
 		if (!$e->isCancelled())
 		{
 			$this->manager->addInProcess($e->getIp());
 		}
+	}
+	
+	/**
+	 * @priority MONITOR
+ 	**/
+	public function finish(FinishCheckEvent $e) : void 
+	{
+		$this->manager->removeFromProcess($e->getIp());
 	}
 	
 }
