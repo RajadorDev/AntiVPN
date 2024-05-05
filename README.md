@@ -1,6 +1,6 @@
-<div style="display: flex; justify-content: center; align-items: center;">
+<p align="center">
 	<img src="./img/logo.png" style="margin: 0 auto;">
-</div>
+</p>
 
 ## About:
 
