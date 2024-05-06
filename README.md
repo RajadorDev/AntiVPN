@@ -44,7 +44,7 @@ To access the **UI** just use: `/antivpn whitelist`
 
 ### Bypass 
 
-- ⚠️ Players who have permission:` antivpn.bypass` will be ignored just like the **whitelist**
+- ⚠️ Players who have permission: `antivpn.bypass` will be ignored just like the **whitelist**
 
 ## Author:
 
