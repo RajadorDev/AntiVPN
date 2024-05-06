@@ -173,12 +173,7 @@ final class AntiVPNCommand extends Command
 						}
 					break;
 					default:
-						if ($p instanceof Player)
-						{
-							(new WhiteListMainForm())->sendToPlayer($p);
-						} else {
-							$this->showUsageTo($p, $label);
-						}
+						$this->showUsageTo($p, $label);
 					break;
 				}
 			} else {
