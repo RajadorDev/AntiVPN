@@ -31,7 +31,7 @@ final class EventsListener implements Listener
 {
 	
 	/** 
-	 * @param Manager 
+	 * @param Manager $manager
 	**/
 	public function __construct(private Manager $manager) 
 	{
