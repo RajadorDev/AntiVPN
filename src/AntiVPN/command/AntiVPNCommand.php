@@ -23,7 +23,7 @@ use AntiVPN\Manager;
 
 use AntiVPN\utils\AntiVPNAPI;
 
-use AntiVPN\form\{WhiteListMainForm, ConfirmAddWhiteListForm, RemovePlayerForm};
+use AntiVPN\form\{WhiteListMainForm, ConfirmAddWhiteListForm, RemovePlayerForm, AddPlayerForm};
 
 use pocketmine\Server;
 
@@ -124,7 +124,7 @@ final class AntiVPNCommand extends Command
 										} else if ($p instanceof Player) {
 											(new AddPlayerForm($p))->sendToPlayer($p);
 										} else {
-											$p->sendMessage(self::COMMAND_PREFIX . "§7To add whitelisted player use: §f/{$commandLabel} {$args[0]} {$args[1]} <player_name>");
+											$p->sendMessage(self::COMMAND_PREFIX . "§7To add whitelisted player use: §f/{$label} {$args[0]} {$args[1]} <player_name>");
 										}
 									break;
 									case 'remove':
