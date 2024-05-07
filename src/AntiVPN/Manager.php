@@ -296,5 +296,3 @@ final class Manager extends PluginBase
 	}
 	
 }
-
-?>
