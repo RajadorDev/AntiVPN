@@ -62,5 +62,3 @@ class RemovePlayerForm extends CustomForm
 	}
 	
 }
-
-?>
