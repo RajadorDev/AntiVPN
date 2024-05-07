@@ -72,5 +72,3 @@ class WhiteListMainForm extends SimpleForm
 	}
 	
 }
-
-?>
