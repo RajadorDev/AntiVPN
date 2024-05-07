@@ -57,7 +57,7 @@ class CheckTask extends AsyncTask
 	 * @param String $ip 
 	 * @param String $user
 	 * @param String $token
-	 * @param Callable (String $username, String $ip, ? Player $player, bool $isSafe) : void
+	 * @param Callable (String $username, String $ip, ? Player $player, bool $isSafe) : void $callback
  	**/
 	public function __construct(String $ip, String $user, String $token, callable $callback) 
 	{
