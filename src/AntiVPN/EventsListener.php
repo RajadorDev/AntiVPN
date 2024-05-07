@@ -127,5 +127,3 @@ final class EventsListener implements Listener
 	}
 	
 }
-
-?>
