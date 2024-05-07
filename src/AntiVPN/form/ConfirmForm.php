@@ -47,5 +47,3 @@ abstract class ConfirmForm extends ModalForm
 	abstract public function onConfirm(Player $player) : void;
 	
 }
-
-?>
