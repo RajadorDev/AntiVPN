@@ -47,5 +47,3 @@ abstract class AntiVPNEvent extends PlayerEvent
 	}
 	
 }
-
-?>
