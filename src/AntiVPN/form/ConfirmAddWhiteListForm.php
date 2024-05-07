@@ -44,5 +44,3 @@ class ConfirmAddWhiteListForm extends ConfirmForm
 	}
 	
 }
-
-?>
