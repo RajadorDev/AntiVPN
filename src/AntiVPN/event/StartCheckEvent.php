@@ -25,5 +25,3 @@ final class StartCheckEvent extends AntiVPNEvent implements Cancellable
 {
 	use CancellableTrait;
 }
-
-?>
