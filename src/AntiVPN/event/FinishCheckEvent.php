@@ -42,5 +42,3 @@ class FinishCheckEvent extends Event
 	}
 	
 }
-
-?>
