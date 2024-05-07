@@ -25,5 +25,3 @@ final class PlayerBlockedEvent extends AntiVPNEvent implements Cancellable
 {
 	use CancellableTrait;
 }
-
-?>
