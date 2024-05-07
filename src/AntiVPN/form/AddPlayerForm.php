@@ -58,5 +58,3 @@ class AddPlayerForm extends CustomForm
 	}
 	
 }
-
-?>
