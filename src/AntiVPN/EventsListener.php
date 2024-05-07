@@ -30,7 +30,9 @@ use pocketmine\event\player\PlayerLoginEvent;
 final class EventsListener implements Listener 
 {
 	
-	/** @param Manager **/
+	/** 
+	 * @param Manager 
+	**/
 	public function __construct(private Manager $manager) 
 	{
 		$manager->getLogger()->info('Registering listener...');
