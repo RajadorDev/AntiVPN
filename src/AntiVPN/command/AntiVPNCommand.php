@@ -199,5 +199,3 @@ final class AntiVPNCommand extends Command
 	}
 	
 }
-
-?>
