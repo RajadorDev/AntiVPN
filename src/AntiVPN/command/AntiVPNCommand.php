@@ -31,13 +31,14 @@ use pocketmine\player\Player;
 
 use pocketmine\command\{Command, CommandSender};
 
-use pocketmine\plugin\{PluginOwned, PluginOwnedTrait};
+use pocketmine\plugin\{PluginOwned, PluginOwnedTrait, Plugin};
 
 final class AntiVPNCommand extends Command implements PluginOwned
 {
 	
 	use PluginOwnedTrait {
 		__construct as setOwner;
+		getOwningPlugin as getManager;
 	}
 	
 	const COMMAND_PREFIX = '§6Anti§cVPN§r  ';
@@ -199,6 +200,14 @@ final class AntiVPNCommand extends Command implements PluginOwned
 			$this->wlUsage
 		);
 		$player->sendMessage($usage);
+	}
+	
+	/**
+	 * @return Manager
+ 	**/
+	public function getOwningPlugin() : Plugin 
+	{
+		return $this->getManager();
 	}
 	
 }
