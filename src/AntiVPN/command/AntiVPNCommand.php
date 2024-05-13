@@ -31,24 +31,22 @@ use pocketmine\player\Player;
 
 use pocketmine\command\{Command, CommandSender};
 
-use pocketmine\plugin\{PluginOwned, PluginOwnedTrait, Plugin};
+use pocketmine\plugin\{PluginOwned, Plugin};
 
 final class AntiVPNCommand extends Command implements PluginOwned
 {
 	
-	use PluginOwnedTrait {
-		__construct as setOwner;
-		getOwningPlugin as getManager;
-	}
-	
 	const COMMAND_PREFIX = '§6Anti§cVPN§r  ';
+	
+	/** @var Plugin **/
+	private Manager $manager;
 	
 	/** @var String **/
 	private String $wlUsage = "§8---====(§6Anti§cVPN§f WhiteList§8)====---\n§8>  §f/{command_label} {argument_label} add <player_name> §7To add whitelisted player.\n§8>  §f/{command_label} {argument_label} remove <player_name>§7 To remove whitelisted player.\n§8>  §f/{command_label} {argument_label} list §7To see the whitelist.";
 	
 	public function __construct() 
 	{
-		$this->setOwner(Manager::getInstance());
+		$this->manager = Manager::getInstance();
 		parent::__construct 
 		(
 			'antivpn',
@@ -202,12 +200,9 @@ final class AntiVPNCommand extends Command implements PluginOwned
 		$player->sendMessage($usage);
 	}
 	
-	/**
-	 * @return Manager
- 	**/
 	public function getOwningPlugin() : Plugin 
 	{
-		return $this->getManager();
+		return $this->manager;
 	}
 	
 }
