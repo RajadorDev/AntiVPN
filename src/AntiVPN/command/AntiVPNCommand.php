@@ -38,7 +38,7 @@ final class AntiVPNCommand extends Command implements PluginOwned
 	
 	const COMMAND_PREFIX = '§6Anti§cVPN§r  ';
 	
-	/** @var Plugin **/
+	/** @var Manager **/
 	private Manager $manager;
 	
 	/** @var String **/
