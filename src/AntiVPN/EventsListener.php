@@ -33,7 +33,7 @@ final class EventsListener implements Listener
 	/** @param Manager $manager **/
 	public function __construct(private Manager $manager) 
 	{
-		$manager->getLogger()->info('Registering listener...');
+		$manager->getLogger()->debug('Registering listener...');
 		$manager->getServer()->getPluginManager()->registerEvents($this, $manager);
 	}
 	
