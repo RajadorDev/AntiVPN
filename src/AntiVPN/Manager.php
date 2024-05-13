@@ -66,16 +66,11 @@ final class Manager extends PluginBase
 	
 	public function onEnable() : void 
 	{
-		$this->getLogger()->info('Loading preferences...');
 		$this->initResource();
 		$this->loadPreferences();
-		$this->getLogger()->info('Loading WhiteList...');
 		$this->initWhiteList();
-		$this->getLogger()->info('Loading command...');
 		$this->initCommand();
-		$this->getLogger()->info('Loading key...');
 		$this->loadKey();
-		$this->getLogger()->info('Loading Listener...');
 		(new EventsListener($this));
 	}
 	
@@ -105,16 +100,16 @@ final class Manager extends PluginBase
 		{
 			$dir = $this->getDataFolder() . 'cache.json';
 			$this->cache = new Config($dir, Config::JSON);
-			$this->getLogger()->info('Cache enabled.');
+			$this->getLogger()->debug('Cache enabled.');
 		} else {
-			$this->getLogger()->info('Cache disabled.');
+			$this->getLogger()->debug('Cache disabled.');
 		}
 	}
 	
 	private function initWhiteList() : void 
 	{
 		$this->whiteList = new Config($this->getDataFolder() .  'whitelist.txt', Config::ENUM);
-		$this->getLogger()->info('WhiteList loaded suceffully.');
+		$this->getLogger()->debug('WhiteList loaded suceffully.');
 		if (($c = count($this->whiteList->getAll())) <= 0)
 		{
 			$this->getLogger()->info('You can add players that will be ignored by this system using: /antivpn wl add <player_name>');
@@ -134,7 +129,7 @@ final class Manager extends PluginBase
 		if (AntiVPNAPI::isValidKey($key))
 		{
 			$this->key = $key;
-			$this->getLogger()->info('Key loaded suceffully.');
+			$this->getLogger()->debug('Key loaded suceffully.');
 		} else {
 			$this->getLogger()->warning('Key: "' . $key . '" is not a valid key! Please set your vpnapi.io key using: /antivpn setkey <your_key>');
 		}
