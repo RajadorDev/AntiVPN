@@ -1,6 +1,6 @@
 ---
 name: AntiVPN
-version: 2.0.1
+version: 2.0.2
 api: 5.0.0
 main: AntiVPN\Manager
 author: Rajador 
