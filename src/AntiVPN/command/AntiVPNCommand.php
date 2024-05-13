@@ -31,20 +31,23 @@ use pocketmine\player\Player;
 
 use pocketmine\command\{Command, CommandSender};
 
-final class AntiVPNCommand extends Command 
+use pocketmine\plugin\{PluginOwned, PluginOwnedTrait};
+
+final class AntiVPNCommand extends Command implements PluginOwned
 {
 	
-	const COMMAND_PREFIX = '§6Anti§cVPN§r  ';
+	use PluginOwnedTrait {
+		__construct as setOwner;
+	}
 	
-	/** @var Manager **/
-	private Manager $manager;
+	const COMMAND_PREFIX = '§6Anti§cVPN§r  ';
 	
 	/** @var String **/
 	private String $wlUsage = "§8---====(§6Anti§cVPN§f WhiteList§8)====---\n§8>  §f/{command_label} {argument_label} add <player_name> §7To add whitelisted player.\n§8>  §f/{command_label} {argument_label} remove <player_name>§7 To remove whitelisted player.\n§8>  §f/{command_label} {argument_label} list §7To see the whitelist.";
 	
 	public function __construct() 
 	{
-		$this->manager = Manager::getInstance();
+		$this->setOwner(Manager::getInstance());
 		parent::__construct 
 		(
 			'antivpn',
@@ -81,8 +84,8 @@ final class AntiVPNCommand extends Command
 								
 								if (AntiVPNAPI::isValidKey($key))
 								{
-									$this->manager->setKey($key);
-									$this->manager->saveKey();
+									$this->getOwningPlugin()->setKey($key);
+									$this->getOwningPlugin()->saveKey();
 									$p->sendMessage(self::COMMAND_PREFIX . '§7Key setted §l§aSuceffully§r§7.');
 								} else {
 									$p->sendMessage(self::COMMAND_PREFIX . "§7\"§f{$key}§7\" §cis not a valid key!");
@@ -117,7 +120,7 @@ final class AntiVPNCommand extends Command
 											{
 												(new ConfirmAddWhiteListForm($name))->sendToPlayer($p);
 											} else {
-												$this->manager->addWhitelisted($name);
+												$this->getOwningPlugin()->addWhitelisted($name);
 												$p->sendMessage(self::COMMAND_PREFIX . '§7Player §f' . $name . ' §7added to whitelist §a§lSuceffully§r§7.');
 											}
 											
@@ -133,16 +136,16 @@ final class AntiVPNCommand extends Command
 										if (isset($args[2]) && trim($args[2]) != '')
 										{
 											$user = $args[2];
-											if ($this->manager->isWhitelisted($user))
+											if ($this->getOwningPlugin()->isWhitelisted($user))
 											{
 												$user = strtolower($user);
-												$this->manager->getWhiteList()->remove($user);
+												$this->getOwningPlugin()->getWhiteList()->remove($user);
 												$p->sendMessage("§7User {$args[2]} §7removed §a§lSuceffully§r§7.");
 											} else {
 												$p->sendMessage(self::COMMAND_PREFIX . "§7Player §f{$user} §7is not whitelisted!");
 											}
 										} else if ($p instanceof Player) {
-											if (count($this->manager->getWhiteList()->getAll()) > 0)
+											if (count($this->getOwningPlugin()->getWhiteList()->getAll()) > 0)
 											{
 												(new RemovePlayerForm)->sendToPlayer($p);
 											} else {
