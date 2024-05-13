@@ -83,8 +83,8 @@ final class AntiVPNCommand extends Command implements PluginOwned
 								
 								if (AntiVPNAPI::isValidKey($key))
 								{
-									$this->getOwningPlugin()->setKey($key);
-									$this->getOwningPlugin()->saveKey();
+									$this->manager->setKey($key);
+									$this->manager->saveKey();
 									$p->sendMessage(self::COMMAND_PREFIX . '§7Key setted §l§aSuceffully§r§7.');
 								} else {
 									$p->sendMessage(self::COMMAND_PREFIX . "§7\"§f{$key}§7\" §cis not a valid key!");
@@ -119,7 +119,7 @@ final class AntiVPNCommand extends Command implements PluginOwned
 											{
 												(new ConfirmAddWhiteListForm($name))->sendToPlayer($p);
 											} else {
-												$this->getOwningPlugin()->addWhitelisted($name);
+												$this->manager->addWhitelisted($name);
 												$p->sendMessage(self::COMMAND_PREFIX . '§7Player §f' . $name . ' §7added to whitelist §a§lSuceffully§r§7.');
 											}
 											
@@ -135,16 +135,16 @@ final class AntiVPNCommand extends Command implements PluginOwned
 										if (isset($args[2]) && trim($args[2]) != '')
 										{
 											$user = $args[2];
-											if ($this->getOwningPlugin()->isWhitelisted($user))
+											if ($this->manager->isWhitelisted($user))
 											{
 												$user = strtolower($user);
-												$this->getOwningPlugin()->getWhiteList()->remove($user);
+												$this->manager->getWhiteList()->remove($user);
 												$p->sendMessage("§7User {$args[2]} §7removed §a§lSuceffully§r§7.");
 											} else {
 												$p->sendMessage(self::COMMAND_PREFIX . "§7Player §f{$user} §7is not whitelisted!");
 											}
 										} else if ($p instanceof Player) {
-											if (count($this->getOwningPlugin()->getWhiteList()->getAll()) > 0)
+											if (count($this->manager->getWhiteList()->getAll()) > 0)
 											{
 												(new RemovePlayerForm)->sendToPlayer($p);
 											} else {
