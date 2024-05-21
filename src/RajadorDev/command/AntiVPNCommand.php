@@ -38,8 +38,8 @@ final class AntiVPNCommand extends Command implements PluginOwned
 	
 	const COMMAND_PREFIX = '§6Anti§cVPN§r  ';
 	
-	/** @var Manager **/
-	private Manager $manager;
+	/** @var AntiVPN **/
+	private AntiVPN $manager;
 	
 	/** @var String **/
 	private String $wlUsage = "§8---====(§6Anti§cVPN§f WhiteList§8)====---\n§8>  §f/{command_label} {argument_label} add <player_name> §7To add whitelisted player.\n§8>  §f/{command_label} {argument_label} remove <player_name>§7 To remove whitelisted player.\n§8>  §f/{command_label} {argument_label} list §7To see the whitelist.";
