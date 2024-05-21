@@ -42,8 +42,8 @@ final class AntiVPN extends PluginBase
 	/** @var Config | null **/
 	private ? Config $cache = null;
 	
-	/** @var Manager **/
-	private static Manager $instance;
+	/** @var AntiVPN **/
+	private static AntiVPN $instance;
 	
 	/** @var bool **/
 	private bool $hasCacheEnabled = true;
@@ -280,7 +280,7 @@ final class AntiVPN extends PluginBase
 	
 	public static function sendWhiteList(Player $player) : void 
 	{
-		$list = Manager::getInstance()->getWhiteList()->getAll(true);
+		$list = AntiVPN::getInstance()->getWhiteList()->getAll(true);
 		if (count($list) > 0)
 		{
 			$list = implode('§r, ', $list);
