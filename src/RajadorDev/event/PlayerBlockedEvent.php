@@ -17,7 +17,7 @@ declare (strict_types = 1);
 
 */
 
-namespace AntiVPN\event;
+namespace RajadorDev\event;
 
 use pocketmine\event\{Cancellable, CancellableTrait};
 
