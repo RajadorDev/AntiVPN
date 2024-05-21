@@ -17,13 +17,13 @@ declare (strict_types = 1);
 
 */
 
-namespace AntiVPN\command;
+namespace RajadorDev\command;
 
-use AntiVPN\Manager;
+use RajadorDev\Manager;
 
-use AntiVPN\utils\AntiVPNAPI;
+use RajadorDev\utils\AntiVPNAPI;
 
-use AntiVPN\form\{WhiteListMainForm, ConfirmAddWhiteListForm, RemovePlayerForm, AddPlayerForm};
+use RajadorDev\form\{WhiteListMainForm, ConfirmAddWhiteListForm, RemovePlayerForm, AddPlayerForm};
 
 use pocketmine\Server;
 
