@@ -17,9 +17,9 @@ declare (strict_types = 1);
 
 */
 
-namespace AntiVPN\form;
+namespace RajadorDev\form;
 
-use AntiVPN\libs\form\ModalForm;
+use RajadorDev\libs\form\ModalForm;
 
 use pocketmine\player\Player;
 
