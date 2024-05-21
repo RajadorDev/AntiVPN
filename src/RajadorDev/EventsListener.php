@@ -30,8 +30,8 @@ use pocketmine\event\player\PlayerLoginEvent;
 final class EventsListener implements Listener 
 {
 	
-	/** @param Manager $manager **/
-	public function __construct(private Manager $manager) 
+	/** @param AntiVPN $manager **/
+	public function __construct(private AntiVPN $manager) 
 	{
 		$manager->getLogger()->debug('Registering listener...');
 		$manager->getServer()->getPluginManager()->registerEvents($this, $manager);
