@@ -17,15 +17,15 @@ declare (strict_types = 1);
 
 */
 
-namespace AntiVPN;
+namespace RajadorDev;
 
-use AntiVPN\utils\AntiVPNAPI;
+use RajadorDev\utils\AntiVPNAPI;
 
-use AntiVPN\task\CheckTask;
+use RajadorDev\task\CheckTask;
 
-use AntiVPN\event\StartCheckEvent;
+use RajadorDev\event\StartCheckEvent;
 
-use AntiVPN\command\AntiVPNCommand;
+use RajadorDev\command\AntiVPNCommand;
 
 use pocketmine\plugin\PluginBase;
 
@@ -33,7 +33,7 @@ use pocketmine\utils\Config;
 
 use pocketmine\player\Player;
 
-final class Manager extends PluginBase 
+final class AntiVPN extends PluginBase 
 {
 	
 	/** @var Config **/
