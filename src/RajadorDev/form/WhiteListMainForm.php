@@ -51,7 +51,7 @@ class WhiteListMainForm extends SimpleForm
 						$form->sendToPlayer($player);
 					break;
 					case self::LIST:
-						Manager::sendWhiteList($player);
+						AntiVPN::sendWhiteList($player);
 					break;
 				}
 			}
