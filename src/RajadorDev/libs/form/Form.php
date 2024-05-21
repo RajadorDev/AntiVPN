@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace AntiVPN\libs\form;
+namespace RajadorDev\libs\form;
 
 use InvalidArgumentException;
 use pocketmine\form\Form as IForm;
