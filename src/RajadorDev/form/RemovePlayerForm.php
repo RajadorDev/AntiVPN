@@ -17,13 +17,13 @@ declare (strict_types = 1);
 
 */
 
-namespace AntiVPN\form;
+namespace RajadorDev\form;
 
 use pocketmine\player\Player;
 
-use AntiVPN\Manager;
+use RajadorDev\AntiVPN;
 
-use AntiVPN\libs\form\CustomForm;
+use RajadorDev\libs\form\CustomForm;
 
 class RemovePlayerForm extends CustomForm 
 {
@@ -40,12 +40,12 @@ class RemovePlayerForm extends CustomForm
 				{
 					if (isset($data[self::TARGET]))
 					{
-						$list = Manager::getInstance()->getWhiteList()->getAll(true);
+						$list = AntiVPN::getInstance()->getWhiteList()->getAll(true);
 						$id = $data[self::TARGET];
 						if (isset($list[$id]))
 						{
 							$id = $list[$id];
-							Manager::getInstance()->getWhiteList()->remove($id);
+							AntiVPN::getInstance()->getWhiteList()->remove($id);
 							$player->sendMessage("§7User $id §7removed §a§lSuceffully§r§7.");
 						} else {
 							$player->sendMessage('§cUser not found!');
