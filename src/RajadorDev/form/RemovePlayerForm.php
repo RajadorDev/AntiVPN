@@ -55,7 +55,7 @@ class RemovePlayerForm extends CustomForm
 			}
 		);
 		
-		$list = Manager::getInstance()->getWhiteList()->getAll(true);
+		$list = AntiVPN::getInstance()->getWhiteList()->getAll(true);
 		
 		$this->setTitle('§cRemove §fWhitelisted §cPlayer');
 		$this->addDropdown('§7Select the player:', $list, $default, self::TARGET);
