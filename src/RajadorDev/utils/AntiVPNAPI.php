@@ -17,11 +17,11 @@ declare (strict_types = 1);
 
 */
 
-namespace AntiVPN\utils;
+namespace RajadorDev\utils;
 
-use AntiVPN\Manager;
+use RajadorDev\AntiVPN;
 
-use AntiVPN\event\PlayerBlockedEvent;
+use RajadorDev\event\PlayerBlockedEvent;
 
 use pocketmine\Server;
 
@@ -50,15 +50,15 @@ final class AntiVPNAPI
 	{
 		return function (String $username, String $ip, ? Player $player, bool $isSafe) : void 
 		{
-			if (Manager::getInstance()->isCacheEnabled())
+			if (AntiVPN::getInstance()->isCacheEnabled())
 			{
-				Manager::getInstance()->addCachedValue($ip, $isSafe);
+				AntiVPN::getInstance()->addCachedValue($ip, $isSafe);
 			}
 			if (!$isSafe && $player instanceof Player)
 			{
 				$username = $player->getName();
-				$player->kick('IP proxy/vpn detected', null, Manager::getInstance()->getKickScreenMessage($username));
-				$message = Manager::getInstance()->getAdminAlertMessage($username);
+				$player->kick('IP proxy/vpn detected', null, AntiVPN::getInstance()->getKickScreenMessage($username));
+				$message = AntiVPN::getInstance()->getAdminAlertMessage($username);
 				foreach (Server::getInstance()->getOnlinePlayers() as $all)
 				{
 					if ($all->hasPermission('antivpn.alert.receive'))
