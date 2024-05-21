@@ -17,11 +17,11 @@ declare (strict_types = 1);
 
 */
 
-namespace AntiVPN;
+namespace RajadorDev;
 
-use AntiVPN\event\{StartCheckEvent, PlayerBlockedEvent, FinishCheckEvent};
+use RajadorDev\event\{StartCheckEvent, PlayerBlockedEvent, FinishCheckEvent};
 
-use AntiVPN\utils\AntiVPNAPI;
+use RajadorDev\utils\AntiVPNAPI;
 
 use pocketmine\event\Listener;
 
