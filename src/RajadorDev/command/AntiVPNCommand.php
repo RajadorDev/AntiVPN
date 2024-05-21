@@ -19,7 +19,7 @@ declare (strict_types = 1);
 
 namespace RajadorDev\command;
 
-use RajadorDev\Manager;
+use RajadorDev\AntiVPN;
 
 use RajadorDev\utils\AntiVPNAPI;
 
@@ -46,7 +46,7 @@ final class AntiVPNCommand extends Command implements PluginOwned
 	
 	public function __construct() 
 	{
-		$this->manager = Manager::getInstance();
+		$this->manager = AntiVPN::getInstance();
 		parent::__construct 
 		(
 			'antivpn',
@@ -156,7 +156,7 @@ final class AntiVPNCommand extends Command implements PluginOwned
 									break;
 									case 'list':
 									case 'all':
-										Manager::sendWhiteList($p);
+										AntiVPN::sendWhiteList($p);
 									break;
 									default:
 										if ($p instanceof Player) 
