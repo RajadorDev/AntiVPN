@@ -17,15 +17,15 @@ declare (strict_types = 1);
 
 */
 
-namespace AntiVPN\task;
+namespace RajadorDev\task;
 
 use CurlHandle;
 
-use AntiVPN\Manager;
+use RajadorDev\AntiVPN;
 
-use AntiVPN\utils\AntiVPNAPI;
+use RajadorDev\utils\AntiVPNAPI;
 
-use AntiVPN\event\FinishCheckEvent;
+use RajadorDev\event\FinishCheckEvent;
 
 use pocketmine\Server;
 
@@ -148,7 +148,7 @@ class CheckTask extends AsyncTask
 					break;
 				}
 				$message = isset($result[1]) ? $result[1] : 'Unknow error message';
-				Manager::getInstance()->getLogger()->error($errorName . ': ' . $message);
+				AntiVPN::getInstance()->getLogger()->error($errorName . ': ' . $message);
 			}
 		}
 	}
