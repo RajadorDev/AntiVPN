@@ -17,9 +17,9 @@ declare (strict_types = 1);
 
 */
 
-namespace AntiVPN\form;
+namespace RajadorDev\form;
 
-use AntiVPN\libs\form\CustomForm;
+use RajadorDev\libs\form\CustomForm;
 
 use pocketmine\Server;
 
