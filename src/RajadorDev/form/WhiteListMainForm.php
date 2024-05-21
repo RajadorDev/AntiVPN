@@ -17,11 +17,11 @@ declare (strict_types = 1);
 
 */
 
-namespace AntiVPN\form;
+namespace RajadorDev\form;
 
-use AntiVPN\Manager;
+use RajadorDev\AntiVPN;
 
-use AntiVPN\libs\form\SimpleForm;
+use RajadorDev\libs\form\SimpleForm;
 
 use pocketmine\player\Player;
 
