@@ -2,6 +2,9 @@
 	<img src="./img/logo.png" style="margin: 0 auto;">
 </p>
 
+<a href="https://poggit.pmmp.io/p/AntiVPN"><img src="https://poggit.pmmp.io/shield.state/AntiVPN"></a>
+<a href="https://poggit.pmmp.io/p/AntiVPN"><img src="https://poggit.pmmp.io/shield.dl.total/AntiVPN"></a>
+
 ## About:
 
 This is a plugin that blocks players who use **VPN/Proxy** on their PocketMine **API 5** (PMMP 5) server
