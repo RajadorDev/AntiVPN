@@ -4,6 +4,7 @@
 
 <a href="https://poggit.pmmp.io/p/AntiVPN"><img src="https://poggit.pmmp.io/shield.state/AntiVPN"></a>
 <a href="https://poggit.pmmp.io/p/AntiVPN"><img src="https://poggit.pmmp.io/shield.dl.total/AntiVPN"></a>
+<a href="https://discord.gg/HkfMbBN2AD"><img src="https://img.shields.io/discord/982037265075302551?label=discord&color=7289DA&logo=discord" alt="Discord"></a>
 
 ## About:
 
